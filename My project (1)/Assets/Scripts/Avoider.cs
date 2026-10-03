@@ -2,42 +2,52 @@ using UnityEngine;
 
 public class Avoider : MonoBehaviour
 {
-	public UnityEngine.AI.NavMeshAgent agent;
+    public UnityEngine.AI.NavMeshAgent agent;
 
-	public GameObject player;
-	public float maxDistance;
+    public GameObject player;
+    public float maxDistance;
+	
+    public bool canSee;
 
-	public bool canSee;
+    [SerializeField] private int visionAmount = 12;
 
-	public void Update()
-	{
-		LookAt();
-		Shoot();
-	}
+    void Update()
+    {
+        LookAt();
+        EstablishVision();
+    }
 
-	public void Detection()
-	{
-		while (canSee)
-		{
-			//run away //else //stay still
-		}
-	}
+    private void LookAt()
+    {
+        transform.LookAt(player.transform.position);
+    }
 
-	private void LookAt()
-	{
-		transform.LookAt(player.transform.position);
-	}
+    private void EstablishVision()
+    {
+        canSee = false; 
 
-	private void Shoot()
-	{
-		RaycastHit hit;
+        for (int i = 0; i < visionAmount; i++)
+        {
+            float angle = i * (360f / visionAmount);
+            Vector3 direction = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            Shoot(direction);
+        }
+    }
 
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxDistance))
-		{
-			Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-			canSee = true;
-		}
-		else {canSee = false;}
+    private void Shoot(Vector3 direction)
+    {
+        Vector3 worldDir = transform.TransformDirection(direction);
 
-	}
+        if (Physics.Raycast(transform.position, worldDir, out RaycastHit hit, maxDistance))
+        {
+            Debug.DrawRay(transform.position, worldDir * hit.distance, Color.red);
+
+            if (hit.collider.gameObject == player)
+                canSee = true;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, worldDir * maxDistance, Color.green);
+        }
+    }
 }
