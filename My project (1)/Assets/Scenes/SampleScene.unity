@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 209243547}
   - component: {fileID: 209243546}
   - component: {fileID: 209243545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 1063686255}
   - component: {fileID: 1063686254}
   - component: {fileID: 1063686253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ENEMY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,8 +579,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Avoider
   agent: {fileID: 1063686254}
   player: {fileID: 1707712939}
-  maxDistance: 10
+  maxDistance: 20
   canSee: 0
+  visionAmount: 12
+  sampleWidth: 20
+  sampleHeight: 20
+  sampleRadius: 1
+  escapeCheckTime: 0.5
+  visionBlockerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!195 &1063686254
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -692,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 1063686252}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 2.17359, z: -10.48}
+  m_LocalPosition: {x: 0.1, y: 1.5, z: -10.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -951,7 +959,7 @@ Transform:
   m_GameObject: {fileID: 1707712939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.68, y: 2.17359, z: -5.47}
+  m_LocalPosition: {x: 5.53, y: 1.5, z: -1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -969,7 +977,7 @@ GameObject:
   - component: {fileID: 1757181970}
   - component: {fileID: 1757181969}
   - component: {fileID: 1757181968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
