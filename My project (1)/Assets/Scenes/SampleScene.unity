@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 1063686255}
   - component: {fileID: 1063686254}
   - component: {fileID: 1063686253}
+  - component: {fileID: 1063686259}
   m_Layer: 6
   m_Name: ENEMY
   m_TagString: Untagged
@@ -572,7 +573,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063686252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b723aecbd9bb6d24ba133120529f4de4, type: 3}
   m_Name: 
@@ -706,6 +707,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063686259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063686252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1529366026, guid: ee1e2d6076130514ab7dd64b08178cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TheAvoider.dll::TheAvoider.Avoider
+  agent: {fileID: 1063686254}
+  player: {fileID: 1707712939}
+  maxDistance: 20
+  speed: 3.5
+  drawGizmos: 1
+  canSee: 0
+  visionAmount: 12
+  sampleWidth: 20
+  sampleHeight: 20
+  sampleRadius: 1
+  escapeCheckTime: 0.5
+  visionBlockerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1087395914
 GameObject:
   m_ObjectHideFlags: 0
